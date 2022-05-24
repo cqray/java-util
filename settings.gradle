@@ -1,4 +1,4 @@
 rootProject.name = 'java-util'
-include 'library'
-include 'simple'
+//include 'library'
+//include 'simple'
 
