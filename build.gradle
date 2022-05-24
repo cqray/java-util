@@ -20,7 +20,8 @@ targetCompatibility = 1.8
 version = '0.0.2'
 
 dependencies {
-
+    compileOnly 'org.jetbrains:annotations:20.1.0'
+//    compile 'com.google.guava:guava:31.1-jre'
 }
 
 tasks.withType(JavaCompile) {

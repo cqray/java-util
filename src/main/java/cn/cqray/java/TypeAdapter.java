@@ -1,6 +1,6 @@
 package cn.cqray.java;
 
-import cn.cqray.java.traversal.TraversalCallback;
+import cn.cqray.java.traverse.TraverseCallback;
 
 @SuppressWarnings("unchecked")
 public abstract class TypeAdapter<T> {
@@ -9,13 +9,13 @@ public abstract class TypeAdapter<T> {
         return size((T) data);
     }
 
-    public final int traversal(Object data, TraversalCallback<?> callback) {
-        return onTraversal((T) data, (TraversalCallback<T>) callback);
+    public final void traversal(Object data, boolean reserve, TraverseCallback<?> callback) {
+        onTraversal((T) data, reserve, (TraverseCallback<T>) callback);
     }
+
+    public abstract Class<T> getTypeClass();
 
     public abstract int size(T data);
 
-    public abstract int onTraversal(T data, TraversalCallback<T> callback);
-
-    public abstract Class<T> getTypeClass();
+    public abstract void onTraversal(T data, boolean reserve, TraverseCallback<T> callback);
 }

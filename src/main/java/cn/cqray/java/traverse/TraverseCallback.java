@@ -1,6 +1,6 @@
-package cn.cqray.java.traversal;
+package cn.cqray.java.traverse;
 
-public interface TraversalCallback<T> {
+public interface TraverseCallback<T> {
 
     /**
      * 遍历子项回调
