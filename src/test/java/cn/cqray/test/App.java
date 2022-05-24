@@ -3,12 +3,13 @@ package cn.cqray.test;
 import cn.cqray.java.traverse.Traverse;
 import cn.cqray.java.util.StringUtils;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
         System.out.println(StringUtils.isEmpty("44"));
 
         int[] ints = new int[]{10, 11};
@@ -23,8 +24,6 @@ public class App {
         int index = Traverse.with(ints)
                 .type(int.class)
                 .find(val -> val == 11);
-
-        System.out.println("位置：" + index);
 
         List<Integer> list = Arrays.asList(1,2,3);
 
