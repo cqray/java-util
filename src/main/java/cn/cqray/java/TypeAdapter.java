@@ -9,9 +9,13 @@ public abstract class TypeAdapter<T> {
         return size((T) data);
     }
 
+    public final int traversal(Object data, TraversalCallback<?> callback) {
+        return onTraversal((T) data, (TraversalCallback<T>) callback);
+    }
+
     public abstract int size(T data);
 
-    public abstract void traversal(T data, TraversalCallback<T> callback);
+    public abstract int onTraversal(T data, TraversalCallback<T> callback);
 
     public abstract Class<T> getTypeClass();
 }

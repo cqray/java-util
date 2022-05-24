@@ -6,6 +6,10 @@ import cn.cqray.java.TypeAdapter;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 数据个数工具类
+ * @author Cqray
+ */
 public class SizeUtils {
 
     public static int get(CharSequence text) {
