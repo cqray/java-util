@@ -1,7 +1,7 @@
 package cn.cqray.java.util;
 
-import cn.cqray.java.ExtraTypeManager;
-import cn.cqray.java.TypeAdapter;
+import cn.cqray.java.type.ExtraTypeManager;
+import cn.cqray.java.type.TypeAdapter;
 
 import java.util.List;
 import java.util.Map;

@@ -1,9 +1,13 @@
-package cn.cqray.java;
+package cn.cqray.java.type;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 支撑SizeUtils、EmptyUtils、Traverse的额外数据类型
+ * @author Cqray
+ */
 public class ExtraTypeManager {
 
     private static volatile ExtraTypeManager mInstance;

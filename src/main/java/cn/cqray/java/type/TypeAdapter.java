@@ -1,7 +1,12 @@
-package cn.cqray.java;
+package cn.cqray.java.type;
 
 import cn.cqray.java.traverse.TraverseCallback;
 
+/**
+ * 类型适配器
+ * @author Cqray
+ * @param <T>
+ */
 @SuppressWarnings("unchecked")
 public abstract class TypeAdapter<T> {
 
@@ -13,9 +18,24 @@ public abstract class TypeAdapter<T> {
         onTraversal((T) data, reserve, (TraverseCallback<T>) callback);
     }
 
+    /**
+     * 类型Class
+     * @return Class
+     */
     public abstract Class<T> getTypeClass();
 
+    /**
+     * 数据个数计算
+     * @param data 数据
+     * @return 个数
+     */
     public abstract int size(T data);
 
+    /**
+     * 遍历实现
+     * @param data 数据
+     * @param reserve 是否倒序
+     * @param callback 回调
+     */
     public abstract void onTraversal(T data, boolean reserve, TraverseCallback<T> callback);
 }
