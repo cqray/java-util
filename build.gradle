@@ -57,8 +57,8 @@ publishing {
         // MavenPublication必须有，这个是调用的任务类
         mavenJava(MavenPublication) {
             // 这里头是artifacts的配置信息，不填会采用默认的
-            groupId = 'cn.cqray'
-            artifactId = 'java'
+//            groupId = 'cn.cqray'
+//            artifactId = 'java'
             version = '0.0.7'
 
             from components.java
