@@ -1,5 +1,9 @@
 package cn.cqray.java.traverse;
 
+/**
+ * 遍历回调
+ * @author Cqray
+ */
 public interface TraverseCallback<T> {
 
     /**

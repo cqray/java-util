@@ -27,6 +27,8 @@ public class App {
 
         List<Integer> list = Arrays.asList(1,2,3);
 
+        System.out.println(StringUtils.join(list, ","));
+
         ListIterator<Integer> iterator = list.listIterator();
 
         while (iterator.hasNext()) {

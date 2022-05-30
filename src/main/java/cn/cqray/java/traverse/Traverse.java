@@ -1,7 +1,7 @@
 package cn.cqray.java.traverse;
 
-import cn.cqray.java.ExtraTypeManager;
-import cn.cqray.java.TypeAdapter;
+import cn.cqray.java.type.ExtraTypeManager;
+import cn.cqray.java.type.TypeAdapter;
 import cn.cqray.java.util.SizeUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,7 +25,7 @@ public class Traverse {
      * 设置子项类型
      * @param cls 类
      * @param <T> 泛型
-     * @return
+     * @return 遍历内部实现
      */
     public <T> TraversalKit<T> type(Class<T> cls) {
         return new TraversalKit<>(mData);
@@ -132,7 +132,6 @@ public class Traverse {
      * 从数组中获取指定位置项
      * @param array 数组数据
      * @param index 索引
-     * @return
      */
     private static Object getItem(@NotNull Object array, int index) {
         Class<?> cls = array.getClass();
