@@ -1,6 +1,8 @@
 package cn.cqray.test;
 
 import cn.cqray.java.traverse.Traverse;
+import cn.cqray.java.util.EmptyUtils;
+import cn.cqray.java.util.SizeUtils;
 import cn.cqray.java.util.StringUtils;
 
 import java.io.UnsupportedEncodingException;
@@ -24,6 +26,9 @@ public class App {
         int index = Traverse.with(ints)
                 .type(int.class)
                 .find(val -> val == 11);
+
+        SizeUtils.get(new Object());
+        EmptyUtils.check(new Object());
 
         List<Integer> list = Arrays.asList(1,2,3);
 

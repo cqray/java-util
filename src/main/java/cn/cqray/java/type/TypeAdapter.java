@@ -2,6 +2,8 @@ package cn.cqray.java.type;
 
 import cn.cqray.java.traverse.TraverseCallback;
 
+import java.lang.reflect.Type;
+
 /**
  * 类型适配器
  * @author Cqray
@@ -22,7 +24,7 @@ public abstract class TypeAdapter<T> {
      * 类型Class
      * @return Class
      */
-    public abstract Class<T> getTypeClass();
+    public abstract Type getClassType();
 
     /**
      * 数据个数计算
