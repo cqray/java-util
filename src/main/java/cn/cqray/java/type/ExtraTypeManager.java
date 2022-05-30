@@ -1,5 +1,7 @@
 package cn.cqray.java.type;
 
+import cn.cqray.java.TypeAdapter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

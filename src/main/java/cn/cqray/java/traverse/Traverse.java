@@ -1,7 +1,7 @@
 package cn.cqray.java.traverse;
 
+import cn.cqray.java.TypeAdapter;
 import cn.cqray.java.type.ExtraTypeManager;
-import cn.cqray.java.type.TypeAdapter;
 import cn.cqray.java.util.SizeUtils;
 import org.jetbrains.annotations.NotNull;
 
