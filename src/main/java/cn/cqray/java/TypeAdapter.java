@@ -2,6 +2,8 @@ package cn.cqray.java;
 
 import cn.cqray.java.traverse.TraverseCallback;
 
+import java.lang.reflect.Type;
+
 @SuppressWarnings("unchecked")
 public abstract class TypeAdapter<T> {
 
@@ -13,7 +15,7 @@ public abstract class TypeAdapter<T> {
         onTraversal((T) data, reserve, (TraverseCallback<T>) callback);
     }
 
-    public abstract Class<T> getTypeClass();
+    public abstract Type getType();
 
     public abstract int size(T data);
 
