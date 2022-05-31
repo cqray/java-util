@@ -24,7 +24,7 @@ public abstract class TypeAdapter<T> {
      * 类型Class
      * @return Class
      */
-    public abstract Type getClassType();
+    public abstract Class<T> getTypeClass();
 
     /**
      * 数据个数计算

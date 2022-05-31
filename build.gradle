@@ -32,7 +32,7 @@ apply plugin: 'io.spring.dependency-management'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-//version = '0.0.6'
+version = '0.1.0'
 
 dependencies {
     compileOnly 'org.jetbrains:annotations:20.1.0'
@@ -56,10 +56,10 @@ publishing {
         // 这个mavenJava可以随便填，只是一个任务名字而已
         // MavenPublication必须有，这个是调用的任务类
         mavenJava(MavenPublication) {
-            // 这里头是artifacts的配置信息，不填会采用默认的
+//             这里头是artifacts的配置信息，不填会采用默认的
 //            groupId = 'cn.cqray'
 //            artifactId = 'java'
-            version = '0.0.8'
+//            version = '0.0.8'
 
             from components.java
         }

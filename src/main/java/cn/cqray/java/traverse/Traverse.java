@@ -177,7 +177,7 @@ public class Traverse {
                 } else {
                     List<TypeAdapter<?>> adapters = ExtraTypeManager.getInstance().getTypeAdapters();
                     for (TypeAdapter<?> adapter : adapters) {
-                        if (cls.getName().equals(adapter.getClassType().getTypeName())) {
+                        if (cls == adapter.getTypeClass()) {
                             adapter.traversal(data, false, callback);
                         }
                     }
@@ -205,7 +205,7 @@ public class Traverse {
                 } else {
                     List<TypeAdapter<?>> adapters = ExtraTypeManager.getInstance().getTypeAdapters();
                     for (TypeAdapter<?> adapter : adapters) {
-                        if (cls.getName().equals(adapter.getClassType().getTypeName())) {
+                        if (cls == adapter.getTypeClass()) {
                             adapter.traversal(data, true, callback);
                         }
                     }
