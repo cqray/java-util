@@ -68,7 +68,7 @@ public class StringUtils {
             String newJoin = join == null ? "" : join;
             StringBuilder builder = new StringBuilder();
             Traverse.with(data)
-                    .type(Object.class)
+                    .valType(Object.class)
                     .positive(object -> {
                         builder.append(object).append(newJoin);
                         return false;
