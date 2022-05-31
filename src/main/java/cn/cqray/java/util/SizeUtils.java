@@ -98,7 +98,7 @@ public class SizeUtils {
             } else {
                 List<TypeAdapter<?>> adapters = ExtraTypeManager.getInstance().getTypeAdapters();
                 for (TypeAdapter<?> adapter : adapters) {
-                    if (cls == adapter.getTypeClass()) {
+                    if (cls.getName().equals(adapter.getTypeClass().getName())) {
                         return adapter.getSize(data);
                     }
                 }
