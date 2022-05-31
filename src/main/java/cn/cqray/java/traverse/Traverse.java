@@ -22,13 +22,23 @@ public class Traverse {
     }
 
     /**
-     * 设置子项类型
+     * 设置键类型，并遍历键
      * @param cls 类
      * @param <T> 泛型
      * @return 遍历内部实现
      */
-    public <T> TraversalKit<T> type(Class<T> cls) {
-        return new TraversalKit<>(mData);
+    public <T> TraversalKit<T> keyType(Class<T> cls) {
+        return new TraversalKit<>(mData, true);
+    }
+
+    /**
+     * 设置值类型，并遍历值
+     * @param cls 类
+     * @param <T> 泛型
+     * @return 遍历内部实现
+     */
+    public <T> TraversalKit<T> valType(Class<T> cls) {
+        return new TraversalKit<>(mData, false);
     }
 
     /**
@@ -206,13 +216,9 @@ public class Traverse {
         /** 遍历key **/
         private boolean mKey;
 
-        public TraversalKit(Object data) {
+        public TraversalKit(Object data, boolean key) {
             mData = data;
-        }
-
-        public TraversalKit<T> key() {
-            mKey = true;
-            return this;
+            mKey = key;
         }
 
         /**

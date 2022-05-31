@@ -2,8 +2,6 @@ package cn.cqray.java.type;
 
 import cn.cqray.java.traverse.TraverseCallback;
 
-import java.lang.reflect.Type;
-
 /**
  * 类型适配器
  * @author Cqray
@@ -17,11 +15,7 @@ public abstract class TypeAdapter<T> {
     }
 
     public final void traversal(Object data, boolean key, boolean reserve, TraverseCallback<?> callback) {
-        if (key) {
-            onTraversalKey((T) data, reserve, (TraverseCallback<Object>) callback);
-        } else {
-            onTraversalValue((T) data, reserve, (TraverseCallback<Object>) callback);
-        }
+        onTraversal((T) data, key, reserve, (TraverseCallback<Object>) callback);
     }
 
     /**
@@ -43,13 +37,5 @@ public abstract class TypeAdapter<T> {
      * @param reserve 是否倒序
      * @param callback 回调
      */
-    public abstract void onTraversalValue(T data, boolean reserve, TraverseCallback<Object> callback);
-
-    /**
-     * 遍历键值实现
-     * @param data 数据
-     * @param reserve 是否倒序
-     * @param callback 回调
-     */
-    public abstract void onTraversalKey(T data, boolean reserve, TraverseCallback<Object> callback);
+    public abstract void onTraversal(T data, boolean key, boolean reserve, TraverseCallback<Object> callback);
 }

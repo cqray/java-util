@@ -15,16 +15,16 @@ public class App {
         System.out.println(StringUtils.isEmpty("44"));
 
         int[] ints = new int[]{10, 11};
-        
+
         Traverse.with(ints)
-                .type(int.class)
-                .reverse(item -> {
+                .valType(int.class)
+                .positive(item -> {
                     System.out.println(item);
                     return false;
                 });
 
         int index = Traverse.with(ints)
-                .type(int.class)
+                .valType(int.class)
                 .find(val -> val == 11);
 
         SizeUtils.get(new Object());
