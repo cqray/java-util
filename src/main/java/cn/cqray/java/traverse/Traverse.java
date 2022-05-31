@@ -159,54 +159,35 @@ public class Traverse {
     }
 
     /**
-     * 正序遍历
+     * 遍历
      * @param data 要遍历的数据
+     * @param key 是否遍历Key
+     * @param reverse true 倒序 false正序
      * @param callback 回调
      * @param <T> 泛型
      */
-    private static <T> void positive(Object data, TraverseCallback<T> callback) {
+    private static <T> void traverse(Object data, boolean key, boolean reverse, TraverseCallback<T> callback) {
         if (data != null && callback != null) {
             if (data instanceof Iterable) {
-                iterable((Iterable<T>) data, false, callback);
+                // 链表遍历Key-Value均一致
+                iterable((Iterable<T>) data, reverse, callback);
             } else if (data instanceof Map) {
-                map((Map<Object, T>) data, false, callback);
-            } else {
-                Class<?> cls = data.getClass();
-                if (cls.isArray()) {
-                    array(data, false, callback);
+                Map map = (Map) data;
+                if (key) {
+                    iterable(map.keySet(), reverse, callback);
                 } else {
-                    List<TypeAdapter<?>> adapters = ExtraTypeManager.getInstance().getTypeAdapters();
-                    for (TypeAdapter<?> adapter : adapters) {
-                        if (cls.getName().equals(adapter.getTypeClass().getName())) {
-                            adapter.traversal(data, false, callback);
-                        }
-                    }
+                    iterable(map.values(), reverse, callback);
                 }
-            }
-        }
-    }
-
-    /**
-     * 倒序遍历
-     * @param data 要遍历的数据
-     * @param callback 回调
-     * @param <T> 泛型
-     */
-    private static <T> void reverse(Object data, TraverseCallback<T> callback) {
-        if (data != null && callback != null) {
-            if (data instanceof Iterable) {
-                iterable((Iterable<T>) data, true, callback);
-            } else if (data instanceof Map) {
-                map((Map<Object, T>) data, true, callback);
             } else {
                 Class<?> cls = data.getClass();
                 if (cls.isArray()) {
-                    array(data, true, callback);
+                    // 数组遍历Key-Value均一致
+                    array(data, reverse, callback);
                 } else {
                     List<TypeAdapter<?>> adapters = ExtraTypeManager.getInstance().getTypeAdapters();
                     for (TypeAdapter<?> adapter : adapters) {
-                        if (cls.getName().equals(adapter.getTypeClass().getName())) {
-                            adapter.traversal(data, true, callback);
+                        if (cls == adapter.getTypeClass()) {
+                            adapter.traversal(data, key, reverse, callback);
                         }
                     }
                 }
@@ -222,9 +203,16 @@ public class Traverse {
 
         /** 要遍历数据 **/
         private Object mData;
+        /** 遍历key **/
+        private boolean mKey;
 
         public TraversalKit(Object data) {
             mData = data;
+        }
+
+        public TraversalKit<T> key() {
+            mKey = true;
+            return this;
         }
 
         /**
@@ -232,7 +220,7 @@ public class Traverse {
          * @param callback 遍历回调
          */
         public void positive(TraverseCallback<T> callback) {
-            Traverse.positive(mData, callback);
+            Traverse.traverse(mData, mKey, false, callback);
         }
 
         /**
@@ -240,7 +228,7 @@ public class Traverse {
          * @param callback 遍历回调
          */
         public void reverse(TraverseCallback<T> callback) {
-            Traverse.reverse(mData, callback);
+            Traverse.traverse(mData, mKey, true, callback);
         }
 
         /**

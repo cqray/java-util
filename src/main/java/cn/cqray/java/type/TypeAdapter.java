@@ -16,8 +16,12 @@ public abstract class TypeAdapter<T> {
         return size((T) data);
     }
 
-    public final void traversal(Object data, boolean reserve, TraverseCallback<?> callback) {
-        onTraversal((T) data, reserve, (TraverseCallback<Object>) callback);
+    public final void traversal(Object data, boolean key, boolean reserve, TraverseCallback<?> callback) {
+        if (key) {
+            onTraversalKey((T) data, reserve, (TraverseCallback<Object>) callback);
+        } else {
+            onTraversalValue((T) data, reserve, (TraverseCallback<Object>) callback);
+        }
     }
 
     /**
@@ -34,10 +38,18 @@ public abstract class TypeAdapter<T> {
     public abstract int size(T data);
 
     /**
-     * 遍历实现
+     * 遍历数值实现
      * @param data 数据
      * @param reserve 是否倒序
      * @param callback 回调
      */
-    public abstract void onTraversal(T data, boolean reserve, TraverseCallback<Object> callback);
+    public abstract void onTraversalValue(T data, boolean reserve, TraverseCallback<Object> callback);
+
+    /**
+     * 遍历键值实现
+     * @param data 数据
+     * @param reserve 是否倒序
+     * @param callback 回调
+     */
+    public abstract void onTraversalKey(T data, boolean reserve, TraverseCallback<Object> callback);
 }
